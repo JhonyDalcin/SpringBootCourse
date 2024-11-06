@@ -1,7 +1,14 @@
 package br.com.digisolutions.productsapi.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
+//When the entity name is different from database table should have the annotation @Table(name = 'table_name')
 public class Product {
 
+    //if the attribute name is different from databse column name it's necessary to add, the annotation @Column(name = database column name) over the attribute.
+    @Id
     private String id;
     private String name;
     private String description;
