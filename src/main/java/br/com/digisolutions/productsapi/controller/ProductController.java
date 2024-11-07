@@ -1,5 +1,6 @@
 package br.com.digisolutions.productsapi.controller;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.digisolutions.productsapi.model.Product;
@@ -55,6 +57,11 @@ public class ProductController {
         product.setId(id);
         productRepository.save(product);
 
+    }
+
+    @GetMapping
+    public List<Product> buscar(@RequestParam("name") String name){
+        return productRepository.findByName(name);
     }
 
 }
